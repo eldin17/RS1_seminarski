@@ -1,0 +1,111 @@
+<body style="top: -15px;padding-bottom: 500px">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<input [(ngModel)]="filter" (ngModelChange)="getDonatoriFilter()" class="form-control filter" placeholder="Pretraga">
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="main-box clearfix">
+        <div class="table-responsive">
+          <table class="table user-list">
+            <thead>
+            <tr>
+              <th class="text-center">Korisnik</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Broj donacija</th>
+              <th class="text-center">Broj narudžbi</th>
+              <th class="text-center">Broj zvjezdica</th>
+              <th class="text-center">E-mail</th>
+              <th class="text-center">Akcije</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="fadeIn" *ngFor="let d of getDonatoriFilter() | paginate:{
+    itemsPerPage: velicinaStranice,
+    currentPage: trenutnaStranica,
+    totalItems: ukupnoArtikala
+    };
+    let i=index"
+                id="div-{{d.donator.id}}">
+              <td>
+                <img style="height: 50px;border-radius: 5px; object-fit: cover" src="{{d.donator.slikaDonatora}}" alt="">
+                <a (click)="uzmiInfo(d)" data-bs-toggle="tooltip" data-bs-placement="top" title="Uređuj korisnika" data-bs-toggle="modal" data-bs-target="#editModal" class="user-link">{{d.ime}} {{d.prezime}}</a>
+                <span class="user-subhead">Donator</span>
+              </td>
+              <td class="text-center">
+                <span class="label label-default">{{d.donator.statusDonatora}}</span>
+              </td>
+              <td>
+                {{d.donator.brojDonacija}}
+              </td>
+              <td>
+                {{d.donator.brojNarudzbi}}
+              </td>
+              <td>
+                {{d.donator.brojZvjezdica}}
+              </td>
+              <td>
+                <p>{{d.donator.kontakt.emailAdresa}}</p>
+              </td>
+              <td style="width: 20%;">
+
+
+                <a (click)="uzmiInfo(d)" data-bs-toggle="tooltip" data-bs-placement="top" title="Uređuj korisnika" data-bs-toggle="modal" data-bs-target="#editModal" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+                </a>
+
+                <a *ngIf="d.donator.kontakt.dostupan" (click)="uzmiMail(d.donator.kontakt.emailAdresa)" data-bs-toggle="tooltip" data-bs-placement="top" title="Pošalji mail korisniku" data-bs-toggle="modal" data-bs-target="#mailModal" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+									</span>
+                </a>
+
+                <a class="table-link danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Obriši korisnika" (click)="delete(d)">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+									</span>
+                </a>
+
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+
+  <pagination-controls
+    class="my-pagination"
+    style="color: #8c8c8c"
+    previousLabel=""
+    nextLabel=""
+    (pageChange)="promijeniStranicu($event)">
+  </pagination-controls>
+
+</div>
+
+
+<div class="row" style="width: 280px">
+  <p style="color: rgba(77, 77, 77, 0.81);width: 190px">Broj prikaza po stranici</p>
+  <select class="form-select" style="height: 25px;color: #4d4d4d;padding-left: 12px;padding-top: 0;padding-bottom: 0; border: none; background-color: rgba(255,255,255,0.6); width: 60px" (change)="promjenaVelicineStranice($event)">
+    <option style="color: rgba(77, 77, 77, 0.81);" *ngFor="let x of velicineOdabir" [ngValue]="x">
+      {{ x }}
+    </option>
+  </select>
+
+</div>
+
+</body>
+<app-mail [mail]="mail"></app-mail>
+<app-edit [d]="donator2" [k]="kontakt2" [o]="osoba2"></app-edit>

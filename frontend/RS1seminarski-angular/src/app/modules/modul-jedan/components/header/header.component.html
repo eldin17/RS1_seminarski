@@ -1,0 +1,36 @@
+<div
+  class=" fadeIn" style="
+        background: linear-gradient(to left, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;
+        height: 65px;
+        padding: 20px;
+         "
+>
+
+  <nav>
+
+    <a *ngIf="uloga=='Admin'" routerLink="/app/home"  routerLinkActive="active1">POČETNA</a>
+    <a *ngIf="uloga=='Admin'" routerLink="/app/donacije_admin" routerLinkActive="active2"  >DONACIJE</a>
+    <a *ngIf="uloga=='Admin'" routerLink="/app/donatori_admin" routerLinkActive="active3"  >DONATORI</a>
+
+    <a *ngIf="uloga=='Donator'" routerLink="/app/home"  routerLinkActive="active1" >POČETNA</a>
+    <a *ngIf="uloga=='Donator'" routerLink="/app/donacije"  routerLinkActive="active2" >DONACIJE</a>
+    <a *ngIf="uloga=='Donator'" routerLink="/app/donatori"  routerLinkActive="active3" >DONATORI</a>
+
+    <div id="indicator"></div>
+
+  </nav>
+
+
+  <a  (click)="logout()" routerLink="/login" class="button" >
+    <img style="width: 42px;  height:42px; border-radius: 0px; opacity: 60%"  src="https://cdn-icons-png.flaticon.com/512/56/56805.png">
+
+    <div class="logout">ODJAVA</div>
+  </a>
+
+  <a *ngIf="uloga!='Admin'" class="button" (click)="getOsoba(idzaosobu)" data-bs-toggle="modal" data-bs-target="#mojProfilModal">
+    <img style="object-fit: cover;  width: 45px;  height:45px; border: 3px solid rgba(255,255,255,0.73)" src="{{user.slikaDonatora}}">
+
+    <div  class="logout">PROFIL</div>
+  </a>
+</div>
+<app-moj-profil [d]="user" [k]="kontakt" [o]="osoba"></app-moj-profil>

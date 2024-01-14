@@ -1,0 +1,66 @@
+<div class="modal card-body py-5 px-md-5 fadeInDown" id="detaljiModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel22" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content regModal">
+      <div class="modal-header" style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2" style="color: rgba(77,77,77,0.78)">Donacija</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+        <section class="gallery" style="float: left">
+          <div *ngFor="let x of d.slike;let indexOfelement=index;" class="gallery__item ">
+            <input type="radio" id="img-{{indexOfelement}}" checked name="gallery" class="gallery__selector">
+            <img class="gallery__img" src="{{x.putanja}}" alt="">
+            <label for="img-{{indexOfelement}}" class="gallery__thumb hover08"><img src="{{x.putanja}}" alt=""/></label>
+          </div>
+        </section>
+
+<div style="width: 40%;padding-right: 20px;float: right">
+
+        <div class="form-outline mb-4 fadeIn first ">
+          <label class="form-label" for="Naslov" style="color: gray">Naslov</label>
+          <p  type="text" id="Naslov" class="form-control inputModal">{{d.naslov}}</p>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="opis" style="color: gray">Kratak opis</label>
+          <p  type="text" id="opis" class="form-control inputModal">{{d.kratakOpis}}</p>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="naziv" style="color: gray">Naziv predmeta</label>
+          <p type="text" id="naziv" class="form-control inputModal" >{{i.naziv}}</p>
+        </div>
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="kolicina" style="color: gray">Količina</label>
+          <p  id="kolicina" class="form-control inputModal" >{{i.kolicina}}</p>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="proizvodjac" style="color: gray">Proizvođač</label>
+          <p type="text" id="proizvodjac" class="form-control inputModal">{{i.proizvodjac}}</p>
+        </div>
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" style="color: gray;margin-right: 5%">Kategorija</label>
+          <p class="form-control inputModal" style="color: #4d4d4d">
+            <img style="object-fit: cover;width: 30px;margin:0 2%" src="{{kategorija.slikaIkonice}}">
+            {{kategorija.naziv}}<br>
+          <i style="color: #646464">{{kategorija.opis}}</i>
+          </p>
+        </div>
+</div>
+
+      </div>
+      <div class="modal-footer">
+
+        <button style="width: 50%;margin:0 auto;" class="btn btn-primary  mojBtnLogin fadeIn second" data-bs-dismiss="modal">
+          Zatvori
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

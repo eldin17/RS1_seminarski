@@ -1,0 +1,126 @@
+<!-- First modal dialog -->
+<div class="modal  card-body py-5 px-md-5 fadeInDown" data-bs-backdrop="static" id="addModal1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content regModal"  >
+      <div class="modal-header " style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2"  style="color: rgba(77,77,77,0.78)">Dodaj donaciju</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm1">
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="naslov" style="color: gray">Naslov objave</label>
+          <input formControlName="naslov" [(ngModel)]="donacija.naslov" type="text" id="naslov" class="form-control inputModal">
+          <small *ngIf="addForm1.controls['naslov'].dirty && addForm1.hasError('required','naslov')"
+                 style="color: indianred ">*Obavezno unijeti naslov</small>
+        </div>
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="opis" style="color: gray">Kratak opis</label>
+          <textarea formControlName="opis" [(ngModel)]="donacija.kratakOpis" type="text" id="opis" class="form-control inputModal"></textarea>
+          <small *ngIf="addForm1.controls['opis'].dirty && addForm1.hasError('required','opis')"
+                 style="color: indianred ">*Obavezno unijeti opis</small>
+        </div>
+        </form>
+
+      </div>
+      <div class="modal-footer" >
+        <button [disabled]="!addForm1.valid" (click)="donacijaUpload()" class="btn btn-primary mojBtnLogin fadeIn second" data-bs-target="#addModal2" data-bs-toggle="modal">
+          Nastavi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Second modal dialog -->
+<div class="modal card-body py-5 px-md-5 fadeInDown" data-bs-backdrop="static" id="addModal2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel22" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content regModal">
+      <div class="modal-header" style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2" style="color: rgba(77,77,77,0.78)">Dodaj donaciju</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addForm2">
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="naziv" style="color: gray">Naziv predmeta</label>
+          <input formControlName="naziv" [(ngModel)]="item.naziv" type="text" id="naziv" class="form-control inputModal">
+          <small *ngIf="addForm2.controls['naziv'].dirty && addForm2.hasError('required','naziv')"
+                 style="color: indianred ">*Obavezno unijeti naziv</small>
+        </div>
+
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="kolicina" style="color: gray">Količina</label>
+          <select formControlName="kolicina" [(ngModel)]="item.kolicina" id="kolicina">
+            <option *ngFor="let x of kolicina" [ngValue]="x">{{x}}</option>
+          </select>
+          <small *ngIf="addForm2.controls['kolicina'].dirty && addForm2.hasError('required','kolicina')"
+                 style="color: indianred ">*Obavezno unijeti kolicina</small>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="proizvodjac" style="color: gray">Proizvođač</label>
+          <input formControlName="proizvodjac" [(ngModel)]="item.proizvodjac" type="text" id="proizvodjac" class="form-control inputModal">
+          <small *ngIf="addForm2.controls['proizvodjac'].dirty && addForm2.hasError('required','proizvodjac')"
+                 style="color: indianred ">*Obavezno unijeti proizvodjac</small>
+        </div>
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="kategorija" style="color: gray">Kategorija</label>
+          <select formControlName="kategorija" [(ngModel)]="item.kategorijaId" id="kategorija">
+            <option *ngFor="let x of kategorije" [ngValue]="x.id">{{x.naziv}}  -  {{x.opis}}</option>
+          </select>
+          <small *ngIf="addForm2.controls['kategorija'].dirty && addForm2.hasError('required','kategorija')"
+                 style="color: indianred ">*Obavezno unijeti kategorija</small>
+        </div>
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!addForm2.valid" (click)="dodajItem()" class="btn btn-primary  mojBtnLogin fadeIn second" data-bs-target="#addModal3" data-bs-toggle="modal">
+          Nastavi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Third modal dialog -->
+<div class="modal card-body py-5 px-md-5 fadeInDown" data-bs-backdrop="static" id="addModal3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel22" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content regModal">
+      <div class="modal-header" style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2" style="color: rgba(77,77,77,0.78)">Dodaj donaciju</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-8" >
+            <label class="btn btn-default p-0">
+              <input  class="form-control" style="margin: 0 auto" type="file" accept="image/*" multiple (change)="previewSlike($event)" >
+
+            </label>
+          </div>
+        </div>
+
+        <div style="justify-content: center;margin: 0 auto">
+          <img style="margin: 5px;object-fit: cover;width: 220px;height: 220px;border-radius: 10px" *ngFor="let preview of previews" src="{{preview}}" class="preview zoom">
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button  style="width: 50%;margin-top: 150px" [disabled]="!selectedFiles"
+                (click)="proceedUpload();uslov=true" class="btn btn-primary  mojBtnLogin fadeIn second">
+          Upload slike
+        </button>
+        <button style="width: 50%;" [disabled]="!uslov"
+                (click)="updateBrojevi();" class="btn btn-primary  mojBtnLogin fadeIn second" data-bs-dismiss="modal">
+          Završi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

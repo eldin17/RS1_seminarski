@@ -1,0 +1,204 @@
+nav {
+  position: absolute;
+  top: 4%;
+  right: 0;
+  left: 0;
+  width: 319px;
+  display: table;
+  margin: 0 auto;
+  transform: translateY(-50%);
+}
+
+nav a {
+  position: relative;
+  width: 33.333%;
+  display: table-cell;
+  text-align: center;
+  color: #707070;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: 0.2s ease color;
+  font-family: 'Oswald', sans-serif;
+}
+
+nav a:before,
+nav a:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 0.2s ease transform;
+}
+
+nav a:before {
+  top: 0;
+  left: 10px;
+  width: 6px;
+  height: 6px;
+}
+
+nav a:after {
+  top: 5px;
+  left: 18px;
+  width: 4px;
+  height: 4px;
+}
+
+nav a:nth-child(1):before {
+  background-color: yellow;
+}
+
+nav a:nth-child(1):after {
+  background-color: #ffb700;
+}
+
+nav a:nth-child(2):before {
+  background-color: #009dff;
+}
+
+nav a:nth-child(2):after {
+  background-color: #00e2ff;
+}
+
+nav a:nth-child(3):before {
+  background-color: purple;
+}
+
+nav a:nth-child(3):after {
+  background-color: palevioletred;
+}
+.active1 ~ #indicator{
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: 0.2s ease left;
+}
+.active2 ~ #indicator{
+  position: absolute;
+  left: 37%;
+  bottom: 0;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: 0.2s ease left;
+}
+.active3 ~ #indicator{
+  position: absolute;
+  left: 71%;
+  bottom: 0;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: 0.2s ease left;
+}
+
+#indicator {
+  position: absolute;
+  left: 5%;
+  bottom: 0;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: 0.2s ease left;
+}
+
+
+
+nav a:hover {
+  color: #ffffff;
+
+}
+
+nav a:hover:before,
+nav a:hover:after {
+  transform: scale(1);
+}
+
+nav a:nth-child(1):hover ~ #indicator {
+  background: linear-gradient(130deg, #ffb700, yellow);
+  left: 5%;
+}
+
+nav a:nth-child(2):hover ~ #indicator {
+  left: 37%;
+  background: linear-gradient(130deg, #00e2ff, #009dff);
+}
+
+nav a:nth-child(3):hover ~ #indicator {
+  left: 71%;
+  background: linear-gradient(130deg, purple, palevioletred);
+}
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+
+.navigation {
+  width: 100%;
+  background-color: black;
+}
+
+img {
+  width: 42px;
+  border-radius: 25px;
+  float: left;
+}
+
+.logout {
+  font-size: .9em;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  right: -18px;
+  bottom: -10px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+
+}
+
+.button {
+  text-decoration: none;
+  float: right;
+  padding: 12px;
+  margin: 15px;
+  height: 260%;
+  color: #4d4d4d;
+  width: 65px;
+  background-color: rgba(255, 255, 255, 0);
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden;
+  border-radius: 0px;
+  margin-top: -20px;
+}
+
+.button:hover {
+  width: 170px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.68) 10%, rgba(255, 0, 0, 0) 90%) no-repeat;
+
+
+}
+
+.button:hover .logout{
+  opacity: .9;
+}
+
+.button {
+  text-decoration: none;
+}
+
+
+

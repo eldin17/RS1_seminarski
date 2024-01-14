@@ -1,0 +1,45 @@
+<div class="modal card-body py-5 px-md-5 fadeInDown" id="mailModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel22" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content regModal">
+      <div class="modal-header" style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2" style="color: rgba(77,77,77,0.78)">Slanje e-mail poruke</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="mailForm1">
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="adresaTo" style="color: gray">To</label>
+          <input formControlName="to" [(ngModel)]="mail.adresaTo" type="text" id="adresaTo" class="form-control inputModal">
+          <small *ngIf="mailForm1.controls['to'].dirty && mailForm1.hasError('required','to')"
+                 style="color: indianred ">*Obavezno unijeti To</small>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="subject" style="color: gray">Subject</label>
+          <input formControlName="subject" [(ngModel)]="mail.subject" type="text" id="subject" class="form-control inputModal">
+          <small *ngIf="mailForm1.controls['subject'].dirty && mailForm1.hasError('required','subject')"
+                 style="color: indianred ">*Obavezno unijeti Subject</small>
+        </div>
+
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="poruka" style="color: gray">Poruka</label>
+          <textarea formControlName="poruka" [(ngModel)]="mail.sadrzaj" id="poruka" class="form-control inputModal">
+          </textarea>
+          <small *ngIf="mailForm1.controls['poruka'].dirty && mailForm1.hasError('required','poruka')"
+                 style="color: indianred ">*Obavezno unijeti Poruka</small>
+        </div>
+        </form>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!mailForm1.valid" (click)="posalji()" class="btn btn-primary  mojBtnLogin fadeIn second"  data-bs-dismiss="modal">
+          Pošalji
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

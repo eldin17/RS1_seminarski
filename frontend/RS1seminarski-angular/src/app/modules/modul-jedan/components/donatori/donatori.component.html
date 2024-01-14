@@ -1,0 +1,61 @@
+<body style="top: -15px;padding-bottom: 500px">
+    <input [(ngModel)]="filter" (ngModelChange)="getDonatori()" class="form-control filter" placeholder="Pretraga">
+  <div class="container">
+    <div class="card fadeIn" *ngFor="let d of getDonatoriFilter() | paginate:{
+    itemsPerPage: velicinaStranice,
+    currentPage: trenutnaStranica,
+    totalItems: ukupnoArtikala
+    };
+    let i=index"
+    id="div-{{d.donator.id}}">
+
+      <div class="content">
+        <div class="img"><img src="{{d.donator.slikaDonatora}}"></div>
+        <div class="cardContent">
+          <h3>{{d.ime}} {{d.prezime}}<br><span>{{d.donator.statusDonatora}}</span></h3>
+        </div>
+
+          <ul class="list-inline small" style="margin:0 auto">
+
+            <li class="list-inline-item m-0">
+
+              <img style="width: 45px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Flag_of_Bosnia_and_Herzegovina.svg/2560px-Flag_of_Bosnia_and_Herzegovina.svg.png">
+
+            </li>
+
+          </ul>
+      </div>
+         <button class="btn btn-primary mojBtnLogin"
+                 (click)="getDonatora(d.id)"
+                 style="background-color: rgba(255,255,255,0.22);border-radius: 15px;width: 100px;padding: 5px;margin-top: 10px"
+                 data-bs-toggle="modal" data-bs-target="#donatorModal"
+         >Otvori</button>
+    </div>
+
+  </div><br>
+
+
+  <div class="d-flex justify-content-center">
+
+    <pagination-controls
+      class="my-pagination"
+      style="color: #8c8c8c"
+      previousLabel=""
+      nextLabel=""
+      (pageChange)="promijeniStranicu($event)">
+    </pagination-controls>
+
+  </div>
+
+<div class="row" style="width: 250px">
+  <p style="color: rgba(77, 77, 77, 0.81);width: 180px">Broj prikaza po stranici</p>
+  <select class="form-select" style="padding-left: 12px;background-color: rgba(255,255,255,0.6); width: 50px" (change)="promjenaVelicineStranice($event)">
+    <option style="color: rgba(77, 77, 77, 0.81);" *ngFor="let x of velicineOdabir" [ngValue]="x">
+      {{ x }}
+    </option>
+  </select>
+</div>
+</body>
+<app-donator-detalji [d]="donatorDetalji" [o]="osoba"></app-donator-detalji>
+
+

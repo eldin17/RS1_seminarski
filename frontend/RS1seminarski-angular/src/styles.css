@@ -1,0 +1,223 @@
+/* You can add global styles to this file, and also import other style files */
+#porukeKontejnerDiv{
+  top:10px;
+  right:10px;
+  position: fixed;
+  width: 400px;
+  /*background-color: beige;*/
+}
+
+.porukaInfo{
+  color: #ffffff;
+  background: linear-gradient(10deg, #00e5e5 10%, rgba(16, 142, 245, 0.39) 90%)no-repeat;
+  border-left: 5px solid #2fafff;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+
+  border-radius: .25rem;
+  transition: .2s;
+}
+
+
+.porukaWarning{
+  color: #ffffff;
+  background: linear-gradient(-10deg, #e8ce73 10%, rgba(255, 190, 51, 0.6) 90%)no-repeat;
+  border-left: 5px solid #ffdf00;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: .25rem;
+  transition: .2s;
+}
+
+.porukaSuccess{
+  color: #ffffff;
+  background: linear-gradient(-10deg, #54ff76 10%, rgba(19, 241, 172, 0.75) 90%)no-repeat;
+  border-left: 5px solid #84ff00;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: .25rem;
+  transition: .2s;
+}
+
+.porukaError{
+  color: #ffffff;
+  background: linear-gradient(10deg, #ff7c90 10%, rgba(239, 45, 92, 0.78) 90%)no-repeat;
+  border-left: 5px solid #fd223a;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border-radius: .25rem;
+  transition: .2s;
+}
+
+.mojBtnLogin{
+  background-color: #56baed;
+  border: none;
+  width: 100%
+}
+.mojBtnLogin:hover{
+  background: linear-gradient(to left, #bcffd2 10%, rgba(16,245,203,0.39) 90%)no-repeat;
+  border-color: cyan;
+  color: #727272;
+}
+h2 {
+  border-bottom: 2px solid rgba(95, 186, 233, 0.47);
+}
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  background-color: #56baed;
+  content: "";
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: #0d0d0d;
+}
+
+.underlineHover:hover:after{
+  width: 100%;
+}
+
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 50px auto;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: linear-gradient(to right, #bcffd2 10%, rgba(16,245,203,0.39) 90%)no-repeat;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+
+  font-family: "FontAwesome";
+
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid rgba(130, 255, 199, 0.81);
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.regModal{
+  backdrop-filter: blur(5px);background: hsla(0, 0%, 100%, 0.83);
+}
+

@@ -1,0 +1,97 @@
+<div  class="modal  card-body py-5 px-md-5 fadeInDown" id="mojProfilModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content "  >
+      <div class="modal-header " style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2"  style="color: rgba(77,77,77,0.78)">Profil</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="padding: 0;">
+
+        <div class="container rounded bg-white mt-5 mb-5 " >
+          <div class="row regModal" >
+
+
+            <div class="col-md-3 border-right">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <div class="avatar-upload fadeIn first">
+                  <div class="avatar-edit " >
+
+                    <input (change)="previewSlike($event);uslov=true" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" >
+                    <label for="imageUpload" style="padding-left: 7px;padding-top: 2px">
+                      <img style="width: 20px;left: 100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/OOjs_UI_icon_edit-ltr-gray.svg/1024px-OOjs_UI_icon_edit-ltr-gray.svg.png">
+                    </label>
+
+                  </div>
+                  <div class="avatar-preview">
+                    <div id="imagePreview" style='background-image: url("{{d.slikaDonatora}}")'>
+                    </div>
+                  </div><br><br>
+                  <!--<button [disabled]="!uslov" (click)="proceedUpload()" class="btn btn-primary mojBtnLogin fadeIn second" style="border-radius: 50px">
+                    Postavi sliku
+                  </button>-->
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-5 border-right">
+              <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Postavke profila</h4>
+                </div>
+                <form [formGroup]="editProfilForm1">
+                <div class="row mt-2">
+                  <div class="col-md-6"><label class="labels">Ime</label>
+                    <input formControlName="ime" [(ngModel)]="o.ime" type="text" class="form-control" placeholder="first name" value="">
+                    <small *ngIf="editProfilForm1.controls['ime'].dirty && editProfilForm1.hasError('required','ime')"
+                           style="color: indianred ">*Obavezno unijeti ime</small>
+                  </div>
+                  <div class="col-md-6"><label class="labels">Prezime</label>
+                    <input formControlName="prezime" [(ngModel)]="o.prezime" type="text" class="form-control" value="" placeholder="surname">
+                    <small *ngIf="editProfilForm1.controls['prezime'].dirty && editProfilForm1.hasError('required','prezime')"
+                           style="color: indianred ">*Obavezno unijeti prezime</small>
+                  </div>
+                  <div class="col-md-12"><label class="labels">Datum rođenja</label>
+                    <input formControlName="datumRodjenja" [(ngModel)]="o.datumRodjenja" type="date" class="form-control" value="" placeholder="surname">
+                    <small *ngIf="editProfilForm1.controls['datumRodjenja'].dirty && editProfilForm1.hasError('required','datumRodjenja')"
+                           style="color: indianred ">*Obavezno unijeti datum rodjenja</small>
+                  </div>
+                </div>
+
+
+                  <div class="col-md-12"><label class="labels">Broj telefona</label>
+                    <input formControlName="telefon" [(ngModel)]="k.brojTelefona" type="text" class="form-control" placeholder="enter phone number" value="">
+                    <small *ngIf="editProfilForm1.controls['telefon'].dirty && editProfilForm1.hasError('required','telefon')"
+                           style="color: indianred ">*Obavezno unijeti broj telefona</small>
+                  </div>
+                  <div class="col-md-12"><label class="labels">E-Mail adresa</label>
+                    <input formControlName="mail" [(ngModel)]="k.emailAdresa" type="text" class="form-control" placeholder="enter address line 1" value="">
+                    <small *ngIf="editProfilForm1.controls['mail'].dirty && editProfilForm1.hasError('required','mail')"
+                           style="color: indianred ">*Obavezno unijeti mail</small>
+                  </div>
+                </form>
+
+                <div class="col-md-12"><label class="labels" style="font-size: smaller">Pristajem na obavještenja putem mail-a</label>
+                    <input [(ngModel)]="k.dostupan" style="margin-left: 10px"style="margin-left: 10px" type="checkbox" class="form-checkbox" placeholder="enter address line 2" value="">
+                  </div>
+                <br><br>
+
+
+
+              </div>
+            </div>
+            <div class="col-md-4">
+                  <div class="col-md-6"><label class="labels">**Dio za lokaciju**</label></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer" >
+        <button (click)="spremi()" class="btn btn-primary mojBtnLogin fadeIn second" style="width: 50%; margin: auto" data-bs-dismiss="modal">
+          Spremi
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

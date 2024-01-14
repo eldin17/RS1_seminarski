@@ -1,0 +1,214 @@
+<!-- Section: Design Block -->
+<section class="text-center" style="margin: auto;">
+  <!-- Background image -->
+  <div class="p-5 bg-image fadeIn" style="
+        background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;
+        height: 150px;
+        "></div>
+  <!-- Background image -->
+
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong fadeInDown" style="
+        margin-top: -5%;
+        position: relative;
+        background: hsla(0,0%,100%,0.36);
+        backdrop-filter: blur(15px);
+        width: 70%;
+        left: 12%;
+        ">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Registracija</h2>
+
+
+
+<div class="row">
+          <div class="column">
+
+            <form [formGroup]="regForm1">
+
+
+            <div class="form-outline mb-4 fadeIn first">
+              <label class="form-label" for="ime" style="color: gray">Ime</label>
+              <input formControlName="ime" [(ngModel)]="regInfo.ime" type="text" id="ime" class="form-control">
+              <small *ngIf="regForm1.controls['ime'].dirty && regForm1.hasError('required','ime')"
+                     style="color: indianred ">*Obavezno unijeti ime</small>
+            </div>
+
+
+            <div class="form-outline mb-4  fadeIn second">
+              <label class="form-label" for="prezime" style="color: gray">Prezime</label>
+              <input formControlName="prezime" [(ngModel)]="regInfo.prezime" type="text" id="prezime" class="form-control">
+              <small *ngIf="regForm1.controls['prezime'].dirty && regForm1.hasError('required','prezime')"
+                     style="color: indianred ">*Obavezno unijeti prezime</small>
+            </div>
+
+            <div class="form-outline mb-4  fadeIn third">
+              <label class="form-label" for="datum" style="color: gray">Datum rođenja</label>
+              <input formControlName="datumRodjenja" [(ngModel)]="regInfo.datumRodjenja" type="date" id="datum" class="form-control">
+              <small *ngIf="regForm1.controls['datumRodjenja'].dirty && regForm1.hasError('required','datumRodjenja')"
+                     style="color: indianred ">*Obavezno unijeti datum rođenja</small>
+            </div>
+
+          </form>
+
+          </div>
+          <div class="column">
+            <form [formGroup]="regForm2">
+                          <div class="mb-4 fadeIn first">
+                            <label class="form-label" for="username" style="color: gray">Korisničko ime</label>
+                            <input formControlName="korisnicko" [(ngModel)]="regInfo.username" type="text" id="username" class="form-control">
+                            <small *ngIf="regForm2.controls['korisnicko'].dirty && regForm2.hasError('required','korisnicko')"
+                                   style="color: indianred ">*Obavezno unijeti korisnicko ime</small>
+                          </div>
+
+
+                          <div class="mb-4  fadeIn second">
+                            <label class="form-label" for="password" style="color: gray">Lozinka</label>
+                            <input formControlName="lozinka" [(ngModel)]="regInfo.password" type="password" id="password" class="form-control">
+                            <small *ngIf="regForm2.controls['lozinka'].dirty && regForm2.hasError('required','lozinka')"
+                                   style="color: indianred ">*Obavezno unijeti lozinku</small>
+                          </div>
+
+                          <div class="mb-4  fadeIn third">
+                            <label class="form-label" for="password" style="color: gray">Uloga</label>
+                            <select formControlName="uloga" [(ngModel)]="regInfo.uloga" type="text" id="uloga" class="form-select">
+                              <option *ngFor="let x of uloge" [ngValue]="x">{{x}}</option>
+                            </select>
+                            <small *ngIf="regForm2.controls['uloga'].dirty && regForm2.hasError('required','uloga')"
+                                   style="color: indianred ">*Obavezno unijeti ulogu</small>
+                          </div>
+            </form>
+
+          </div>
+</div>
+
+
+
+          <div class="fadeIn fourth">
+
+            <button *ngIf="regInfo.uloga=='Donator'" (click)="registruj();addOsoba();" [disabled]="uslov"  type="submit" class="btn btn-primary btn-block mb-4 mojBtnLogin">
+              Kreiraj račun
+            </button>
+
+            <button *ngIf="regInfo.uloga=='Donator'" (click)="addDonator()" [disabled]="!uslov" data-bs-toggle="modal" data-bs-target="#donatorModal" type="submit" class="btn btn-primary btn-block mb-4 mojBtnLogin">
+              Nastavi
+            </button>
+
+            <button *ngIf="regInfo.uloga!='Donator'" (click)="registruj();addOsoba();" routerLink="/login" type="submit" class="btn btn-primary btn-block mb-4 mojBtnLogin">
+              Registruj se
+            </button>
+
+
+            <div class="text-center">
+              <a routerLink="/login" class="underlineHover" style="text-decoration: none" >Nazad</a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- First modal dialog -->
+<div  class="modal  card-body py-5 px-md-5 fadeInDown" data-bs-backdrop="static" id="donatorModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content regModal"  >
+      <div class="modal-header " style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2"  style="color: rgba(77,77,77,0.78)">Profilna slika</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="avatar-upload fadeIn first">
+          <div class="avatar-edit " >
+
+            <input (change)="previewSlike($event)" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" >
+            <label for="imageUpload" style="padding-left: 7px;padding-top: 2px">
+              <img style="width: 20px;left: 100px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/OOjs_UI_icon_edit-ltr-gray.svg/1024px-OOjs_UI_icon_edit-ltr-gray.svg.png">
+            </label>
+
+          </div>
+          <div class="avatar-preview">
+            <div id="imagePreview" style='background-image: url("{{slika}}")'>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer" >
+        <button (click)="proceedUpload()" class="btn btn-primary mojBtnLogin fadeIn second" data-bs-target="#kontaktModal" data-bs-toggle="modal">
+          Postavi sliku
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Second modal dialog -->
+<div class="modal card-body py-5 px-md-5 fadeInDown" data-bs-backdrop="static" id="kontaktModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel22" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content regModal">
+      <div class="modal-header" style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2" style="color: rgba(77,77,77,0.78)">Kontakt podaci</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="regForm3">
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="brojTelefona" style="color: gray">Broj telefona</label>
+          <input formControlName="telefon" [(ngModel)]="kontaktInfo.brojTelefona" type="text" id="brojTelefona" class="form-control inputModal">
+          <small *ngIf="regForm3.controls['telefon'].dirty && regForm3.hasError('required','telefon')"
+                 style="color: indianred ">*Obavezno unijeti broj telefona</small>
+        </div>
+
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="emailAdresa" style="color: gray">E-mail</label>
+          <input formControlName="mail" [(ngModel)]="kontaktInfo.emailAdresa" type="text" id="emailAdresa" class="form-control inputModal">
+          <small *ngIf="regForm3.controls['mail'].dirty && regForm3.hasError('required','mail')"
+                 style="color: indianred ">*Obavezno unijeti e-mail</small>
+        </div>
+        </form>
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="dostupan" style="color: gray">Želim primati obavještenja putem mail-a</label>
+          <input [(ngModel)]="kontaktInfo.dostupan" type="checkbox" id="dostupan" class="form-checkbox inputModal" style="margin-left: 10px">
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button (click)="addKontaktDonatora()" class="btn btn-primary  mojBtnLogin fadeIn second" [disabled]="uslov2">
+          Potvrdi
+        </button>
+        <button [disabled]="!uslov2" class="btn btn-primary  mojBtnLogin fadeIn second" data-bs-dismiss="modal" routerLink="/login">
+          Zatvori
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+        $('#imagePreview').hide();
+        $('#imagePreview').fadeIn(650);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#imageUpload").change(function() {
+    readURL(this);
+  });
+</script>

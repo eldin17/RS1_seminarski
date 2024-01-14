@@ -1,0 +1,104 @@
+<div class="modal card-body py-5 px-md-5 fadeInDown" id="editModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel22" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content regModal">
+      <div class="modal-header" style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2" style="color: rgba(77,77,77,0.78)">Donacija</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+        <section class="gallery" style="float: left">
+          <div *ngFor="let x of d.slike;let indexOfelement=index;" class="gallery__item">
+            <input type="radio" id="img-{{indexOfelement}}" checked name="gallery" class="gallery__selector">
+            <img class="gallery__img" src="{{x.putanja}}" alt="">
+            <label for="img-{{indexOfelement}}" class="gallery__thumb hover08"><img src="{{x.putanja}}" alt=""/></label>
+          </div>
+        </section>
+
+<div style="width: 40%;padding-right: 20px;float: right">
+  <form [formGroup]="editForm1">
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="Naslov" style="color: gray">Naslov</label>
+          <input formControlName="naslov" [(ngModel)]="d.naslov" type="text" id="Naslov" class="form-control inputModal" [disabled]="usl">
+          <small *ngIf="editForm1.controls['naslov'].dirty && editForm1.hasError('required','naslov')"
+                 style="color: indianred ">*Obavezno unijeti naslov</small>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="opis" style="color: gray">Kratak opis</label>
+          <textarea formControlName="opis" [(ngModel)]="d.kratakOpis" type="text" id="opis" class="form-control inputModal" [disabled]="usl"></textarea>
+          <small *ngIf="editForm1.controls['opis'].dirty && editForm1.hasError('required','opis')"
+                 style="color: indianred ">*Obavezno unijeti opis</small>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="naziv" style="color: gray">Naziv predmeta</label>
+          <input formControlName="naziv" [(ngModel)]="itemEdit.naziv" type="text" id="naziv" class="form-control inputModal" [disabled]="usl">
+          <small *ngIf="editForm1.controls['naziv'].dirty && editForm1.hasError('required','naziv')"
+                 style="color: indianred ">*Obavezno unijeti naziv</small>
+        </div>
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="kolicina" style="color: gray">Količina</label>
+          <select formControlName="kolicina" class="form-select" [(ngModel)]="itemEdit.kolicina" id="kolicina" [disabled]="usl">
+            <option *ngFor="let x of kolicina" [ngValue]="x">{{x}}</option>
+          </select>
+          <small *ngIf="editForm1.controls['kolicina'].dirty && editForm1.hasError('required','kolicina')"
+                 style="color: indianred ">*Obavezno unijeti kolicina</small>
+        </div>
+
+        <div class="form-outline mb-4 fadeIn first">
+          <label class="form-label" for="proizvodjac" style="color: gray">Proizvođač</label>
+          <input formControlName="proizvodjac" [(ngModel)]="itemEdit.proizvodjac" type="text" id="proizvodjac" class="form-control inputModal" [disabled]="usl">
+          <small *ngIf="editForm1.controls['proizvodjac'].dirty && editForm1.hasError('required','proizvodjac')"
+                 style="color: indianred ">*Obavezno unijeti proizvodjac</small>
+        </div>
+
+        <div class="form-outline mb-4  fadeIn first">
+          <label class="form-label" for="kategorija" style="color: gray">Kategorija</label>
+          <select formControlName="kategorija" class="form-select" [(ngModel)]="itemEdit.kategorijaId" id="kategorija" [disabled]="usl">
+            <option *ngFor="let x of kategorije" [ngValue]="x.id">{{x.naziv}}  -  {{x.opis}}</option>
+          </select>
+          <small *ngIf="editForm1.controls['kategorija'].dirty && editForm1.hasError('required','kategorija')"
+                 style="color: indianred ">*Obavezno unijeti kategorija</small>
+        </div>
+  </form>
+
+
+  <div *ngIf="usl!=true" style="margin-bottom: 50px">
+
+        <div class="row">
+          <div class="col-8">
+            <label class="btn btn-default p-0">
+              Promijenite slike
+            </label>
+              <input class="form-control" type="file" accept="image/*" multiple (change)="previewSlike($event)" >
+          </div>
+
+        </div>
+
+        <div>
+          <img style="margin: 5px;object-fit: cover;width: 100px;height: 100px;border-radius: 10px"
+               *ngFor="let preview of previews" src="{{preview}}" class="preview zoom">
+        </div>
+  </div>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!editForm1.valid" *ngIf="usl==false" (click)="sacuvaj();proceedUpload()" class="btn btn-primary  mojBtnLogin fadeIn second" data-bs-dismiss="modal">
+          Potvrdi
+        </button>
+        <button *ngIf="usl==true" class="btn btn-primary  mojBtnLogin fadeIn second" data-bs-dismiss="modal">
+          Zatvori
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

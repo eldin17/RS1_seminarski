@@ -1,0 +1,70 @@
+.card{
+  width: 380px;
+  border: none;
+  border-radius: 15px;
+  padding: 8px;
+  background-color: #fff;
+  position: relative;
+  height: 370px;
+}
+
+.upper{
+  height: 100px;
+}
+
+.upper img{
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.user{
+  position: relative;
+}
+
+.profile img{
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+  margin-top:2px;
+}
+
+.profile{
+  position: absolute;
+  top:-50px;
+  left: 38%;
+  height: 90px;
+  width: 90px;
+  border:3px solid #fff;
+  border-radius: 50%;
+}
+
+.follow{
+  border-radius: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 35px;
+}
+
+.stats span{
+  font-size: 29px;
+}
+
+#formFooter {
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+a {
+  color: #92badd;
+  display:inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.regModal{
+  backdrop-filter: blur(5px);background: hsla(0, 0%, 100%, 0.83);
+}

@@ -1,0 +1,80 @@
+<div class="modal card-body py-5 px-md-5 fadeInDown" id="prikazModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel22" tabindex="-1">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content regModal">
+      <div class="modal-header" style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2" style="color: rgba(77,77,77,0.78)">Donacija</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+        <section class="gallery2" style="float: left">
+          <div *ngFor="let x of d.slike;let indexOfelement2=index;" class="gallery__item2">
+            <input type="radio" id="img2-{{indexOfelement2}}" checked name="gallery2" class="gallery__selector2">
+            <img class="gallery__img2" src="{{x.putanja}}" alt="">
+            <label for="img2-{{indexOfelement2}}" class="gallery__thumb2 hover08"><img class="img2" src="{{x.putanja}}" alt=""/></label>
+          </div>
+        </section>
+<div>
+
+        <div style="width: 40%;padding-right: 20px;float: right">
+
+          <div class="form-outline mb-4 fadeIn first">
+            <label class="form-label" for="Naslov" style="color: gray">Naslov</label>
+            <input  [(ngModel)]="d.naslov" type="text" id="Naslov" class="form-control inputModal" disabled>
+
+          </div>
+
+          <div class="form-outline mb-4 fadeIn first">
+            <label class="form-label" for="opis" style="color: gray">Kratak opis</label>
+            <textarea  [(ngModel)]="d.kratakOpis" type="text" id="opis" class="form-control inputModal" disabled></textarea>
+
+          </div>
+
+          <div class="form-outline mb-4 fadeIn first">
+            <label class="form-label" for="naziv" style="color: gray">Naziv predmeta</label>
+            <input  [(ngModel)]="itemEdit.naziv" type="text" id="naziv" class="form-control inputModal" disabled>
+
+          </div>
+
+          <div class="form-outline mb-4  fadeIn first">
+            <label class="form-label" for="kolicina" style="color: gray">Količina</label>
+            <select  class="form-select" [(ngModel)]="itemEdit.kolicina" id="kolicina" disabled>
+              <option *ngFor="let x of kolicina" [ngValue]="x">{{x}}</option>
+            </select>
+
+          </div>
+
+          <div class="form-outline mb-4 fadeIn first">
+            <label class="form-label" for="proizvodjac" style="color: gray">Proizvođač</label>
+            <input  [(ngModel)]="itemEdit.proizvodjac" type="text" id="proizvodjac" class="form-control inputModal" disabled>
+
+          </div>
+
+          <div class="form-outline mb-4  fadeIn first">
+            <label class="form-label" for="kategorija" style="color: gray">Kategorija</label>
+            <select  class="form-select" [(ngModel)]="itemEdit.kategorijaId" id="kategorija" [disabled]="true">
+              <option *ngFor="let x of kategorije" [ngValue]="x.id">{{x.naziv}}  -  {{x.opis}}</option>
+            </select>
+          </div>
+
+</div>
+
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+
+        <button  class="btn btn-primary  mojBtnLogin fadeIn second" data-bs-dismiss="modal">
+          Zatvori
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

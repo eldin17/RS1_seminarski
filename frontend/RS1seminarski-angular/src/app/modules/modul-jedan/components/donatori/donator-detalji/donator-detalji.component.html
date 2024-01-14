@@ -1,0 +1,48 @@
+<!-- First modal dialog -->
+<div *ngIf="d!=null" class="modal  card-body py-5 px-md-5 fadeInDown" id="donatorModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel1" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content regModal"  >
+      <div class="modal-header " style="background: linear-gradient(to right, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;">
+        <h4 class="fw-bold mb-2"  style="color: rgba(77,77,77,0.78)">Profil</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="user text-center">
+            <div class="profile">
+              <img src="{{d.slikaDonatora}}" class="rounded-circle" width="80">
+            </div>
+          </div>
+
+          <div class="mt-5 text-center">
+            <h4 class="mb-0">{{o.ime}} {{o.prezime}}</h4>
+            <span class="text-muted d-block mb-2">{{d.statusDonatora}}</span>
+
+            <div class="d-flex justify-content-between align-items-center mt-4 px-4">
+
+              <div class="stats fadeIn first">
+                <h6 class="mb-0">Donacije</h6>
+                <span>{{d.brojDonacija}}</span>
+              </div>
+
+              <div class="stats fadeIn second">
+                <h6 class="mb-0">Kupovine</h6>
+                <span>{{d.brojNarudzbi}}</span>
+              </div>
+
+              <div class="stats fadeIn third">
+                <h6 class="mb-0">Broj zvjezdica</h6>
+
+                <span>{{d.brojZvjezdica}}</span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer" >
+        <button *ngIf="d.brojDonacija==0" class="btn btn-primary mojBtnLogin fadeIn fourth" data-bs-dismiss="modal">
+          Zatvori
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

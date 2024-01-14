@@ -1,0 +1,10 @@
+.mojBtnLogin{
+  background-color: #505050;
+  border: none;
+  width: 20%
+}
+.mojBtnLogin:hover{
+  background: linear-gradient(to left, #bcffd2 10%, rgba(16,245,203,0.39) 90%)no-repeat;
+  border-color: cyan;
+  color: #727272;
+}

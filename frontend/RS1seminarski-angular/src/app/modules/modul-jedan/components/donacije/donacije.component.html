@@ -1,0 +1,111 @@
+<body style="top: -15px;padding-bottom: 500px">
+<button class="btn btn-primary mojBtnLogin add"
+        data-bs-toggle="modal" data-bs-target="#addModal1">Dodaj donaciju <img style="object-fit: cover;width: 50px" src="https://cdn.pixabay.com/photo/2017/03/19/03/51/material-icon-2155448_1280.png"></button>
+<div class="row" style="width: 85%">
+
+    <!-- Pills navs -->
+    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist" style="width: 25%;margin:auto">
+
+      <li class="nav-item" role="presentation" >
+        <a class="nav-link active mojBtnLogin "  id="tab-Sve" data-bs-toggle="pill" href="#Sve" role="tab"
+           aria-controls="pills-login" aria-selected="true">Sve</a>
+      </li>
+
+      <li class="nav-item" role="presentation" >
+        <a (click)="getDonacijeMoje()" class="nav-link mojBtnLogin " id="tab-moje" data-bs-toggle="pill" href="#moje" role="tab"
+           aria-controls="pills-register" aria-selected="false">Moje</a>
+      </li>
+
+    </ul>
+    <!-- Pills navs -->
+
+    <!-- Pills content -->
+    <div class="tab-content" style="width: 100%">
+      <div class="tab-pane fade show active" id="Sve" role="tabpanel" aria-labelledby="tab-login">
+
+
+        <div class="row" style="justify-content: center">
+
+          <div class="card mojCard fadeIn" *ngFor="let x of donacije| paginate:{
+    itemsPerPage: velicinaStranice,
+    currentPage: trenutnaStranica,
+    totalItems: ukupnoArtikala
+    };
+    let i=index"
+               id="div-{{x.id}}">
+            <img class="image" src="{{x.slike[0].putanja}}" alt="nema slike">
+
+
+            <div class="card-body">
+              <h3 class="card-title">{{x.naslov}}</h3>
+
+              <a (click)="this.donacija=x;this.item=x.item;"  data-bs-toggle="modal" data-bs-target="#prikazModal"
+                 class="btn btn-primary mojBtnLogin"
+                 style="color: #4d4d4d;margin-top: 10px;background-color: rgba(255,255,255,0.22);border-radius: 15px;width: 100px;padding: 5px;margin-top: 10px"
+              >Otvori</a>
+            </div>
+          </div>
+
+        </div>
+
+      <div class="d-flex justify-content-center">
+
+        <pagination-controls
+          class="my-pagination"
+          style="color: #8c8c8c"
+          previousLabel=""
+          nextLabel=""
+          (pageChange)="promijeniStranicu($event)">
+        </pagination-controls>
+
+      </div>
+
+
+      <div class="row" style=";margin:0 auto;width: 280px">
+        <p style="color: rgba(77, 77, 77, 0.81);width: 190px">Broj prikaza po stranici</p>
+        <select class="form-select"
+                style="height: 25px;color: #4d4d4d;padding-left: 12px;padding-top: 0;padding-bottom: 0; border: none; background-color: rgba(255,255,255,0.6); width: 60px"
+                (change)="promjenaVelicineStranice($event)">
+          <option style="color: rgba(77, 77, 77, 0.81);" *ngFor="let x of velicineOdabir" [ngValue]="x">
+            {{ x }}
+          </option>
+        </select>
+
+      </div>
+      </div>
+
+      <div class="tab-pane fade" id="moje" role="tabpanel" aria-labelledby="tab-moje">
+        <div class="row" style="justify-content: center">
+          <div class="card mojCard"  *ngFor="let x of donacijeMoje">
+
+            <img class="image" src="{{x.slike[0].putanja}}" alt="nema slike">
+
+
+            <div class="card-body" >
+              <h3 class="card-title">{{x.naslov}}</h3>
+
+              <a (click)="this.donacija=x;uslov=false;this.item=x.item;" data-bs-toggle="modal" data-bs-target="#editModal"
+                 class="btn btn-primary mojBtnLogin"
+                 style="color: #4d4d4d;margin-top: 10px;background-color: rgba(255,255,255,0.22);border-radius: 15px;width: 100px;padding: 5px;margin-bottom: 20px;margin-left: 2px;margin-right: 2px"
+              >Otvori</a>
+              <a (click)="obrisi(x,x.item)"
+                 class="btn btn-primary mojBtnLogin2"
+                 style="color: #4d4d4d;margin-top: 10px;background-color: rgba(255,255,255,0.22);border-radius: 15px;width: 100px;padding: 5px;margin-bottom: 20px;margin-left: 2px;margin-right: 2px"
+              >Izbriši</a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <!-- Pills content -->
+
+
+
+  </div>
+</body>
+<app-add></app-add>
+<app-edit-donacija [d]="donacija" [itemEdit]="item" [usl]="uslov"></app-edit-donacija>
+<app-prikazi [d]="donacija" [itemEdit]="item" ></app-prikazi>

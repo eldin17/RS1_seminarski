@@ -1,0 +1,61 @@
+<!-- Section: Design Block -->
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image fadeIn" style="
+        background: linear-gradient(to left, #00f7ff 10%, rgba(16,245,142,0.39) 90%) no-repeat;
+        height: 150px;
+        "></div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong fadeInDown" style="
+        margin-top: -5%;
+        background: hsla(0,0%,100%,0.36);
+        backdrop-filter: blur(15px);
+        width: 30%;
+        left: 32%;
+        ">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Prijava</h2>
+
+
+
+              <form [formGroup]="loginForm">
+                <div class="form-outline mb-4  fadeIn first">
+                  <label class="form-label" for="username" style="color: gray">Korisničko ime</label>
+                  <input formControlName="username" [(ngModel)]="loginInfo.username" type="text" id="username" class="form-control">
+                <small *ngIf="loginForm.controls['username'].dirty && loginForm.hasError('required','username')"
+                       style="color: indianred">*Obavezno unijeti korisnicko ime</small>
+                </div>
+
+
+                <div class="form-outline mb-4 fadeIn second">
+                  <label class="form-label  fadeIn second" for="password" style="color: gray">Lozinka</label>
+                  <input formControlName="password" [(ngModel)]="loginInfo.password" type="password" id="password" class="form-control">
+                  <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')"
+                    style="color: indianred ">*Obavezno unijeti lozinku</small>
+
+                </div>
+
+                <div class="fadeIn third">
+
+                  <button (click)="login()" type="submit" class="btn btn-primary btn-block mb-4 mojBtnLogin">
+                    Prijavi se
+                  </button>
+
+                  <div class="text-center">
+                    <a class="underlineHover" style="text-decoration: none" routerLink="../registracija" >Nemate korisnički račun?</a>
+                  </div>
+
+                </div>
+              </form>
+
+
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
